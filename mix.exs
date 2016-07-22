@@ -29,6 +29,7 @@ defmodule Tenrest.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [{:cowboy, "~> 1.0"},
-     {:plug, "~> 1.1"}]
+     {:plug, "~> 1.1"},
+     {:poison, "~> 2.2"}]
   end
 end
