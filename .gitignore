@@ -3,3 +3,11 @@
 /deps
 erl_crash.dump
 *.ez
+
+*.swp
+/doc
+/rel
+mix.lock
+rebar.lock
+tags
+
