@@ -5,11 +5,13 @@ defmodule Tenrest do
   # for more information on OTP Applications
   def start(_type, _args) do
     import Supervisor.Spec, warn: false
+    port = Application.get_env(:example, :cowboy_port, 8080)
 
     # Define workers and child supervisors to be supervised
     children = [
       # Starts a worker by calling: Tenrest.Worker.start_link(arg1, arg2, arg3)
       # worker(Tenrest.Worker, [arg1, arg2, arg3]),
+      Plug.Adapters.Cowboy.child_spec(:http, Tenrest.Plug.Router, [], port: port)
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
