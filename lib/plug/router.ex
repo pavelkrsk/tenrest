@@ -16,7 +16,7 @@ defmodule Tenrest.Plug.Router do
   end
 
   delete "/kv/:id" do
-    send_resp(conn, 201, "Deleted #{id}\n")
+    send_resp(conn, 204, "")
   end
 
   match _, do: send_resp(conn, 404, "Oops!")
