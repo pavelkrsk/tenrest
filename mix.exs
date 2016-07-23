@@ -14,7 +14,7 @@ defmodule Tenrest.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:cowboy, :logger, :plug],
+    [applications: [:cowboy, :logger, :poolboy, :exredis, :plug],
      mod: {Tenrest, []}]
   end
 
@@ -30,6 +30,9 @@ defmodule Tenrest.Mixfile do
   defp deps do
     [{:cowboy, "~> 1.0"},
      {:plug, "~> 1.1"},
-     {:poison, "~> 2.2"}]
+     {:poison, "~> 2.2"},
+     {:exredis, "~> 0.2.5"},
+     {:poolboy, "~> 1.5"}
+   ]
   end
 end
