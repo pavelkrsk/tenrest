@@ -1,25 +1,43 @@
 defmodule Tenrest.Plug.Router do
+  @moduledoc false
+
   use Plug.Router
 
-  #  alias Example.Plug.VerifyRequest
-  
+  @default_version "1.0"
+  @versions %{
+    "1.0" => Tenrest.V1.Router} 
+
+
   plug Plug.Parsers, parsers: [:urlencoded, :multipart]
   plug :match
   plug :dispatch
 
-  get "/kv/:id" do
-    send_resp(conn, 200, "#{id}\n")
+  match "/kv/:_key" do
+    api_version = 
+      conn
+      |> get_req_header("accept-version")
+      |> List.first()
+
+    router =
+      api_version
+      |> checked_version
+      |> version_handler
+
+    router.call(conn, router.init([])) 
+  end
+  
+  match _ do
+    send_resp(conn, 404, "Oops!")
   end
 
-  put "/kv/:id" do
-    send_resp(conn, 201, "Uploaded #{id}\n")
-  end
+  defp checked_version(nil), do: @default_version
+  defp checked_version(version), do: version 
 
-  delete "/kv/:id" do
-    send_resp(conn, 201, "Deleted #{id}\n")
+  defp version_handler(version) do
+    case @versions[version] do
+      nil     -> @versions[@default_version]
+      handler -> handler
+    end
   end
-
-  match _, do: send_resp(conn, 404, "Oops!")
-
-  end
+end
 
