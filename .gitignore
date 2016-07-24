@@ -6,7 +6,8 @@ erl_crash.dump
 
 *.swp
 /doc
-/rel
+/rel/*
+!/rel/vm.args
 mix.lock
 rebar.lock
 tags
