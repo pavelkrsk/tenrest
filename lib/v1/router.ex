@@ -31,5 +31,5 @@ defmodule Tenrest.V1.Router do
     send_resp(conn, 204, "")
   end
 
-  match _, do: send_resp(conn, 404, "API V1. No found!")
+  match _, do: send_resp(conn, 404, "API V1. Not found.")
 end

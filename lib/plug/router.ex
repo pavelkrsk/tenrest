@@ -29,7 +29,7 @@ defmodule Tenrest.Plug.Router do
   end
   
   match _ do
-    send_resp(conn, 404, "Oops!")
+    send_resp(conn, 404, "Not found.")
   end
 
   defp checked_version(nil), do: @default_version
