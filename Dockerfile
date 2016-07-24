@@ -8,8 +8,10 @@ RUN mix local.hex --force && \
 WORKDIR /code
 
 # install dependencies
-COPY mix.* /code/
-COPY config /code/ 
-RUN mix do deps.get, deps.compile
+#COPY mix.* /code/
+#COPY config /code/ 
+COPY . /code/
+RUN MIX_ENV=prod mix do deps.get, deps.compile, compile, release
 
-CMD /bin/bash
+#CMD /bin/bash
+ENTRYPOINT /code/rel/tenrest/bin/tenrest foreground
