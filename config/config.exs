@@ -28,6 +28,9 @@ use Mix.Config
 # here (which is why it is important to import them last).
 #
 #     import_config "#{Mix.env}.exs"
+config :tenrest,
+  cowboy_port: 8080
+
 config :exredis,
   host: "redis", # for docker
   port: 6379,

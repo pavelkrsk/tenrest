@@ -6,7 +6,7 @@ defmodule Tenrest do
   # for more information on OTP Applications
   def start(_type, _args) do
     import Supervisor.Spec, warn: false
-    port = Application.get_env(:example, :cowboy_port, 8080)
+    port = Application.get_env(:tenrest, :cowboy_port, 8080)
 
     # Define workers and child supervisors to be supervised
     children = [
