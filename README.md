@@ -22,6 +22,13 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
     end
     ```
 
+## Running With Docker
+
+1. docker pull elixir
+2. docker pull redis
+3. docker-compose build
+4. docker-compose run -d --service-ports tenrest
+
 ### Example requests with CURL
 
 **Read**
