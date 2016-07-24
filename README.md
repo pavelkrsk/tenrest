@@ -22,3 +22,19 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
     end
     ```
 
+### Example requests with CURL
+
+**Read**
+```bash
+curl -H "Accept-Version:2.0" http://server:8080/kv/foo
+```
+
+**Update**
+```bash
+curl -H "Accept-Version:2.0" http://server:8080/kv/foo -XPUT -d value=bar -d ttl=20
+```
+
+**Delete**
+```bash
+curl -H "Accept-Version:2.0" http://server:8080/kv/foo -XDELETE
+```
