@@ -5,7 +5,9 @@ defmodule Tenrest.Plug.Router do
 
   @default_version "1.0"
   @versions %{
-    "1.0" => Tenrest.V1.Router} 
+    "1.0" => Tenrest.V1.Router, 
+    "2.0" => Tenrest.V2.Router
+  } 
 
 
   plug Plug.Parsers, parsers: [:urlencoded, :multipart]
