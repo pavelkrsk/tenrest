@@ -12,7 +12,6 @@ defmodule Tenrest do
     children = [
       # Starts a worker by calling: Tenrest.Worker.start_link(arg1, arg2, arg3)
       # worker(Tenrest.Worker, [arg1, arg2, arg3]),
-      :poolboy.child_spec(Redis.pool_name, Redis.poolboy_config, Redis.config),
       Plug.Adapters.Cowboy.child_spec(:http, Tenrest.Plug.Router, [], port: port),
       supervisor(Tenrest.Storage.Lock.Sup, []),
       worker(Tenrest.Storage.TTLManager, [])

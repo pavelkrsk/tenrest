@@ -31,10 +31,3 @@ use Mix.Config
 config :tenrest,
   cowboy_port: 8080
 
-config :exredis,
-  host: "redis", # for docker
-  port: 6379,
-  password: "",
-  db: 0,
-  reconnect: :no_reconnect,
-  max_queue: :infinity
