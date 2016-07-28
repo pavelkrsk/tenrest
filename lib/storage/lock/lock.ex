@@ -20,6 +20,7 @@ defmodule Tenrest.Storage.Lock do
       # lock
       :acquired = GenServer.call(lock_server, {:lock, id, lock_ref})
       fun.()
+      :ok
     after
       # unlock
       GenServer.cast(lock_server, {:unlock, id, lock_ref, self})
